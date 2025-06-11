@@ -10,7 +10,7 @@ app.use(express.json());
 let latestSensorData = null;
 
 const sensorRoutes = require('./routes/sensor');
-const controlRoutes = require('./routes/control'); 
+const controlRoutes = require('./routes/control');
 
 app.use('/api/sensor', sensorRoutes);
 app.use('/api/control', controlRoutes);
