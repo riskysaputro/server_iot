@@ -32,19 +32,19 @@ router.post('/', async (req, res) => {
 });
 
 // GET semua data sensor (history)
-// router.get('/', async (req, res) => {
-//   try {
-//     const [rows] = await db.query('SELECT * FROM sensor_data ORDER BY created_at DESC LIMIT 1');
-//     res.json(rows);
-//   } catch (err) {
-//     console.error('[DB] Failed to fetch history:', err);
-//     res.status(500).json({ error: 'Database error' });
-//   }
-// });
-
-router.get('/', (req, res) => {
-  res.json({ message: 'Sensor endpoint works!' });
+router.get('/', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM sensor_data ORDER BY created_at DESC LIMIT 1');
+    res.json(rows);
+  } catch (err) {
+    console.error('[DB] Failed to fetch history:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
+
+// router.get('/', (req, res) => {
+//   res.json({ message: 'Sensor endpoint works!' });
+// });
 // Endpoint untuk ambil data realtime
 router.get('/latest', (req, res) => {
   if (latestSensorData) {
