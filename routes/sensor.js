@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
 // GET semua data sensor (history)
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await db.query('SELECT * FROM sensor_data ORDER BY created_at DESC LIMIT 1');
+    const [rows] = await db.query('SELECT * FROM sensor_data ORDER BY created_at DESC LIMIT 5');
     res.json(rows);
   } catch (err) {
     console.error('[DB] Failed to fetch history:', err);
